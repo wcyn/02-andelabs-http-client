@@ -1,5 +1,11 @@
 import requests
 
+print("\n\t*** Python HTTP API cmd App ***\n\t%s\n" %("-"*31))
+print("Welcome to this simple Python HTTP API command line app")
+print("Let's get some data from the 'jsonplaceholder.typicode.com' website")
+
+
+
 def get_data(get_url, post_id):
 	try:
 		isinstance(int(post_id), int)
