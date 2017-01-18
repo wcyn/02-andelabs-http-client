@@ -1,20 +1,11 @@
 import requests
 
 
-print("\n\t*** Python HTTP API cmd App ***\n\t%s\n" %("-"*31))
-print("Welcome to this simple Python HTTP API command line app")
-print("Let's get some data from the 'jsonplaceholder.typicode.com' website")
-
-
-
 def get_data(get_url, post_id):
 	try:
 		isinstance(int(post_id), int)
 		if int(post_id) <= 100 and int(post_id) > 0:
 			r = requests.get(get_url + post_id)
-			print(type(r))
-			print(r.__dict__)
-			# print(r.status)
 			return r
 		else:
 			print("Please enter a number between 1 and 100")
@@ -33,12 +24,17 @@ def post_data(post_url,title, body, userId=11):
 	return r
 
 def main():
+	print("\n\t*** Python HTTP API cmd App ***\n\t%s\n" %("-"*31))
+	print("Welcome to this simple Python HTTP API command line app")
+	print("Let's get some data from the 'jsonplaceholder.typicode.com' website")
+
 	url = "https://jsonplaceholder.typicode.com/posts/"
 
 	post_id = input("Enter a number between 1 and 100: ")
 	print("\n\tGetting your request...\n")
 	get_r = get_data(url,post_id)
-	print("Response:\n %sStatus code: %s" % (get_r.text, get_r.status_code))
+	print("\tGET Response data\n\t%s\n%s\n\tStatus code\n\t%s\n%s\n\tHeaders\n\t%s\n%s" % 
+		("-"*17,get_r.text, "-"*11, get_r.status_code,"-"*7, get_r.headers))
 
 	print("\nNow let's add a new post...")
 	title = input("Enter a title for your post: ")
@@ -46,8 +42,8 @@ def main():
 
 	print("\n\tCreating your new post...\n")
 	post_r = post_data(url,title,body)
-	print("Response:\n %sStatus code: %s" % (post_r.text, post_r.status_code))
-
+	print("\tPOST Response data\n\t%s\n%s\n\tStatus code\n\t%s\n%s\n\tHeaders\n\t%s\n%s" % 
+		("-"*17,post_r.text, "-"*11, post_r.status_code,"-"*7, post_r.headers))
 
 if __name__ == '__main__':
 	main()
