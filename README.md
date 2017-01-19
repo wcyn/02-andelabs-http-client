@@ -35,7 +35,7 @@ $ cd 02-andelabs-http-client
 
 Run the python file with the code by typing:
 ```
-$ python code/http_and_web.py
+$ python http_and_web.py
 ```
 
 ## Running the Tests
